@@ -9,20 +9,19 @@ import static org.testng.Assert.assertTrue;
 /**
  * Created by roman on 10/10/16
  */
-public class UserIsAbleToConnectNewProduct extends BaseTest {
+public class VerifyThatUserIsAbleToConnectFirstPaidProduct extends BaseTest {
     @Test
-    public void addNewProduct(){
+    public void purchaseNewProduct() throws InterruptedException {
         mainPage.addFundsForFirstProduct();
         mainPage.clickPlus();
-        System.out.print(mainPage.getNewTarriffInfo());
+
+        assertEquals(mainPage.getNewTarriffInfo(),"30320300");
         assertTrue(mainPage.purchaseButtonIsActive());
+
         mainPage.doPurchase();
+        assertEquals(mainPage.getCurrentBalance(),"0");
         assertFalse(mainPage.purchaseButtonIsActive());
 
-        //assertCurrentTarrifInfo();
-        //asserCurrentBalance()
-
-        //assertEquals(mainPage.getCurrentBalance(),"0");
 
 
     }

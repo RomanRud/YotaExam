@@ -20,8 +20,14 @@ public class MainPage extends BasePage {
     @FindBy(xpath = ".//*[@id='balance-holder']")
     private WebElement balanceHolder;
 
+    @FindBy(xpath = ".//*[@id='sliders']/div[2]/div[1]/div/div[2]/div/div/div[1]")
+    private WebElement currentDaysLeft;
+
     @FindBy(xpath = ".//*[@data-bind='text: previousSpeed']")
     private WebElement currentSpeed;
+
+    @FindBy(xpath = ".//*[@data-bind='text: previousCost']")
+    private WebElement currentCost;
 
     @FindBy(xpath = ".//*[@data-bind='click: moveRight']")
     private WebElement plus;
@@ -50,13 +56,20 @@ public class MainPage extends BasePage {
         String speed = currentSpeed.getText();
         return speed.replaceAll("\\W", "");
     }
+    public String getCurrentCost(){
+        String cost = currentCost.getText();
+        return cost.replaceAll("\\W", "");
+    }
+    public String getCurrentDaysLeft(){
+        String days = currentDaysLeft.getText();
+        return  days.replaceAll("\\W", "");
+    }
     public void resetStat(){
         resetStatButton.click();
     }
 
     public void clickPlus(){
         clickByJS(plus);
-
     }
     public void clickMinus(){
         clickByJS(minus);
@@ -76,7 +89,8 @@ public class MainPage extends BasePage {
     }
 
     public String getNewTarriffInfo(){
-        String tarrifInfo = newTarrifInfo.getText();
+        String tarrifInfo = newTarrifInfo.getText().replaceAll("\\W", "");
         return tarrifInfo;
     }
+
 }
