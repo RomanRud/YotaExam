@@ -12,7 +12,7 @@ public class AppHelper {
     public  void runApplicationLocally(){
 
         ProcessBuilder pb =
-                new ProcessBuilder("/Users/roman/Downloads/test-slider-1.0.0-SNAPSHOT.jar", "sudo -jar", "test-slider-1.0.0-SNAPSHOT.jar");
+                new ProcessBuilder("/Users/roman/Documents/IdeaProjects/YotaExam/src/test/java/app/test-slider-1.0.0-SNAPSHOT.jar", "sudo -jar", "test-slider-1.0.0-SNAPSHOT.jar");
         try {
             Process p = pb.start();
         } catch (IOException e) {

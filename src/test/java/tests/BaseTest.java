@@ -1,5 +1,6 @@
 package tests;
 
+import helpers.AppHelper;
 import helpers.Const;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,13 +17,12 @@ import static org.testng.Assert.assertTrue;
  */
 public class BaseTest {
     private final static  String MY_URL = "http://localhost:4567/index.html";
-
+    AppHelper runner = new AppHelper();
     public WebDriver driver = initDriver();
     public MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
 
-
-
     private WebDriver initDriver(){
+        runner.runApplicationLocally();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return driver;
