@@ -1,6 +1,5 @@
 package pages;
 
-import helpers.Constans;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,7 +35,7 @@ public class MainPage extends BasePage {
     private WebElement minus;
 
     @FindBy(xpath = ".//*[@data-bind=' css: addOferButtonClasses, click: doPurchase']")
-    private WebElement connectButton;
+    private WebElement purchaseButton;
 
     @FindBy(xpath = ".//*[@id='sliders']/div[2]/div[3]/div[2]/div/div")
     private WebElement newTarrifInfo;
@@ -57,12 +56,10 @@ public class MainPage extends BasePage {
         return speed.replaceAll("\\W", "");
     }
     public String getCurrentCost(){
-        String cost = currentCost.getText();
-        return cost.replaceAll("\\W", "");
+        return currentCost.getText().replaceAll("\\W", "");
     }
     public String getCurrentDaysLeft(){
-        String days = currentDaysLeft.getText();
-        return  days.replaceAll("\\W", "");
+        return currentDaysLeft.getText().replaceAll("\\W", "");
     }
     public void resetStat(){
         resetStatButton.click();
@@ -75,22 +72,20 @@ public class MainPage extends BasePage {
         clickByJS(minus);
     }
     public void doPurchase(){
-        if(purchaseButtonIsActive()) connectButton.click();
+       purchaseButton.click();
     }
 
-    public Boolean purchaseButtonIsActive(){
-        Boolean condition = connectButton.isEnabled();
-        return condition;
+    public Boolean purchaseButtonIsDisabled(){
+        return purchaseButton.getAttribute("class").contains("disabled");
     }
 
-    public void addFundsForFirstProduct() {
-        amount.sendKeys(Constans.THREE_HUNDRET);
+    public void addFunds(String value) {
+        amount.sendKeys(value);
         addFundsButton.click();
     }
 
     public String getNewTarriffInfo(){
-        String tarrifInfo = newTarrifInfo.getText().replaceAll("\\W", "");
-        return tarrifInfo;
+        return newTarrifInfo.getText().replaceAll("\\W", "");
     }
 
 }
