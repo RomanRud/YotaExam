@@ -5,6 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
+import static helpers.Const.*;
 
 /**
  * Created by roman on 10/10/16
@@ -29,12 +30,12 @@ public class VerifyThatUserIsAbleToAddFunds extends BaseTest {
     public void addFunds(String value){
         mainPage.addFunds(value);
 
-        if(value.equals(Const.UNACCEPTABLE_SUM)){
-            assertEquals(mainPage.getCurrentBalance(), Const.ZERO);
+        if(value.equals(UNACCEPTABLE_SUM)){
+            assertEquals(mainPage.getCurrentBalance(), ZERO);
             mainPage.resetStat();
         }
         if(value.equals(Const.MINUS_ONE)){
-            assertNotEquals(mainPage.getCurrentBalance(), Const.MINUS_ONE);
+            assertNotEquals(mainPage.getCurrentBalance(), MINUS_ONE);
             mainPage.resetStat();
         }
 

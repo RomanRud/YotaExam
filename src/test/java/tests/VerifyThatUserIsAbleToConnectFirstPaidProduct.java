@@ -14,7 +14,6 @@ public class VerifyThatUserIsAbleToConnectFirstPaidProduct extends BaseTest {
         verifyFirstTarrifOption();
         mainPage.doPurchase();
         verifyThatFirstProductIsPurchased();
-
     }
 
 }
