@@ -22,7 +22,7 @@ public class BaseTest {
     public MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
 
     private WebDriver initDriver(){
-        runner.runApplicationLocally();
+        //runner.runApplicationLocally(); Permissions issue on my machine;
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         return driver;
@@ -34,7 +34,7 @@ public class BaseTest {
     public void verifyThatFirstProductIsPurchased(){
         assertEquals(mainPage.getCurrentBalance(), Const.ZERO);
         assertTrue(mainPage.purchaseButtonIsDisabled());
-        assertEquals(mainPage.getCurrentDaysLeft(), "30");
+        assertEquals(mainPage.getCurrentDaysLeft(), "30", "Remaining number of days is incorrect.");
         assertEquals(mainPage.getCurrentSpeed(), "320");
         assertEquals(mainPage.getCurrentCost(), "300");
     }
